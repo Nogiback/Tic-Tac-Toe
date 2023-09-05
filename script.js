@@ -1,5 +1,7 @@
 'use strict'
 
+//-------------------------------- PLAYER FACTORY -----------------------------------//
+
 const Player = (name, sign) => {
   this.name = name;
   this.sign = sign;
@@ -14,6 +16,8 @@ const Player = (name, sign) => {
 
   return { getName, getSign };
 };
+
+//-------------------------------- GAMEBOARD MODULE -----------------------------------//
 
 const gameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
@@ -45,6 +49,8 @@ const gameBoard = (() => {
   return { setCell, getCell, getBoard, resetBoard };
 
 })();
+
+//----------------------------- DISPLAY CONTROLLER MODULE -------------------------------//
 
 const displayController = (() => {
   const cells = document.querySelectorAll(".cell");
@@ -84,6 +90,7 @@ const displayController = (() => {
 
 })();
 
+//------------------------------ GAME CONTROLLER MODULE --------------------------------//
 
 const gameController = (() => {
   const playerX = Player("Player X", "X");

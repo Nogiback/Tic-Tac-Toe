@@ -61,14 +61,37 @@ body {
   height: 460px;
   display: flex;
   flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
+  padding: 2rem;
 }
 
 .cell {
   border: 1px solid var(--white);
   width: 150px;
   height: 150px;
+}
+
+[data-index="0"],
+[data-index="1"],
+[data-index="2"] {
+  border-top: none;
+}
+
+[data-index="0"],
+[data-index="3"],
+[data-index="6"] {
+  border-left: none;
+}
+
+[data-index="6"],
+[data-index="7"],
+[data-index="8"] {
+  border-bottom: none;
+}
+
+[data-index="2"],
+[data-index="5"],
+[data-index="8"] {
+  border-right: none;
 }
 
 .footer {
