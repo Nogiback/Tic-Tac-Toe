@@ -56,8 +56,8 @@ const displayController = (() => {
       if (gameController.checkGameOver() || e.target.textContent !== "") {
         return;
       } else {
-      gameController.playTurn(parseInt(e.target.dataset.index));
-      updateGameBoard();
+        gameController.playTurn(parseInt(e.target.dataset.index));
+        updateGameBoard();
       };
     })
   );
@@ -107,17 +107,17 @@ const gameController = (() => {
   const playTurn = (cellIndex) => {
     gameBoard.setCell(cellIndex, currentPlayer.getSign());
 
-    if (checkWin(currentPlayer)) {
+    if (checkWin()) {
       setResultMessage(currentPlayer.getSign());
       gameOver = true;
       return;
-    } else if (checkDraw() || round === 9) {
+    } else if (checkDraw() || roundCount === 9) {
       setResultMessage("Draw");
       gameOver = true;
       return;
     } else {
       setCurrentPlayer();
-      displayController.setMessage(`${currentPlayer}'s Turn!`)
+      displayController.setMessage(`${currentPlayer.getName()}'s Turn!`)
       roundCount++;
     }
   }
@@ -127,8 +127,10 @@ const gameController = (() => {
     return board.every((cell) => cell !== "");
   };
 
-  const checkWin = (currentPlayer) => {
+  const checkWin = () => {
     const board = gameBoard.getBoard();
+    const sign = currentPlayer.getSign();
+
     const winConditions = [
       [0, 1, 2],
       [3, 4, 5],
@@ -141,15 +143,12 @@ const gameController = (() => {
     ];
 
     for (const combo of winConditions) {
-      const [a, b, c] = combo;
-      if (board[a] === currentPlayer.getSign() &&
-          board[b] === currentPlayer.getSign() &&
-          board[c] === currentPlayer.getSign()) {
+      let [a, b, c] = combo;
+      if (board[a] === sign && board[b] === sign && board[c] === sign) {
         return true;
-      } else {
-        return false;
       }
     }
+    return false;
   };
 
   const checkGameOver = () => {
@@ -157,8 +156,9 @@ const gameController = (() => {
   };
 
   const resetGame = () => {
-    round = 1;
+    roundCount = 1;
     gameOver = false;
+    currentPlayer = playerX;
   };
 
   return { playTurn, checkGameOver, resetGame };
