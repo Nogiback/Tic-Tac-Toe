@@ -75,6 +75,7 @@ const displayController = (() => {
   );
   
   gameButton.addEventListener("click", (e) => {
+    nameDialog.showModal();
     gameButton.textContent = "Restart Game";
     gameBoard.resetBoard();
     gameController.resetGame();

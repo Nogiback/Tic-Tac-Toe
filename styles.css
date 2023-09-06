@@ -53,7 +53,6 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding-top: 3rem;
   background: var(--blue);
 }
 
@@ -139,4 +138,16 @@ body {
   font-size: 1.1rem;
   background: var(--black);
   color: var(--orange);
+}
+
+@media screen and (max-width: 850px) {
+  .gameboard {
+    width: 305px;
+    height: 305px;
+  }
+  
+  .cell {
+    width: 100px;
+    height: 100px;
+  }
 }
