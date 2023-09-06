@@ -15,6 +15,7 @@
   </header>
 
   <div class="main">
+    <div class="message" id="message">Click Start Game to Begin!</div>
     <div class="gameboard">
       <div class="cell" data-index="0"></div>
       <div class="cell" data-index="1"></div>
@@ -26,16 +27,25 @@
       <div class="cell" data-index="7"></div>
       <div class="cell" data-index="8"></div>
     </div>
-
-    <div class="message" id="message"></div>
-    <button id="restart">Start Game</button>
+    <button id="game-btn">Start Game</button>
+  </div>
   
+  <div class="modal">
+    <dialog id="name-input">
+      <h1>Enter Player Names</h1>
+      <button id="close-modal"><i class="material-symbols-outlined">close</i></button>
+      <form action="/" method="get" id="form">
+        <input type="text" id="player-x" name="player-x" placeholder="Player X Name" required>
+        <input type="text" id="player-o" name="player-o" placeholder="Player O Name" required>
+        <button id="submit-btn" value="default">Submit</button>
+      </form>
+    </dialog>
   </div>
 
   <footer class="footer">
     <p>Built by Nogiback</p>
     <a href="https://github.com/Nogiback" target="_blank">
-      <i class="fa-solid fa-brands fa-github fa-spin fa-lg" style="color: #ffffff;"></i></a>
+      <i class="fa-solid fa-brands fa-github fa-spin fa-lg" style="color: rgb(245, 158, 11);"></i></a>
   </footer>
 
 </body>
