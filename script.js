@@ -2,19 +2,20 @@
 
 //-------------------------------- PLAYER FACTORY -----------------------------------//
 
-const Player = (name, sign) => {
-  this.name = name;
-  this.sign = sign;
+const Player = (sign) => {
+  let name = "";
   
   const getName = () => {
     return name;
   }; 
 
-  const getSign = () => {
-    return sign;
-  };
+  const getSign = () => sign;
 
-  return { getName, getSign };
+  const setName = (newName) => {
+    name = newName;
+  }
+
+  return { getName, getSign, setName };
 };
 
 //-------------------------------- GAMEBOARD MODULE -----------------------------------//
@@ -75,11 +76,30 @@ const displayController = (() => {
   );
   
   gameButton.addEventListener("click", () => {
-    gameButton.textContent = "Restart Game";
-    gameBoard.resetBoard();
-    gameController.resetGame();
-    updateGameBoard();
-    setMessage("Player X's turn!");
+    if (gameButton.textContent === "Start Game") {
+      nameDialog.showModal();
+      playerXNameField.focus();
+      submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        gameController.playerX.setName(playerXNameField.value);
+        gameController.playerO.setName(playerONameField.value);
+        nameDialog.close();
+        form.reset();
+        setMessage(`${gameController.playerX.getName()}'s Turn!`);
+        gameButton.textContent = "Restart Game";
+        updateGameBoard();
+      });
+    } else if (gameButton.textContent = "Restart Game") {
+      gameBoard.resetBoard();
+      gameController.resetGame();
+      setMessage(`${gameController.playerX.getName()}'s Turn!`);
+      updateGameBoard();
+    }
+  });
+
+  closeModal.addEventListener("click", () => {
+    nameDialog.close();
+    form.reset();
   });
 
   const setMessage = (message) => {
@@ -99,8 +119,8 @@ const displayController = (() => {
 //------------------------------ GAME CONTROLLER MODULE --------------------------------//
 
 const gameController = (() => {
-  const playerX = Player("Player X", "X");
-  const playerO = Player("Player O", "O");
+  const playerX = Player("X");
+  const playerO = Player("O");
   let currentPlayer = playerX;
   let roundCount = 1;
   let gameOver = false;
@@ -113,7 +133,7 @@ const gameController = (() => {
     if (result === "Draw") {
       displayController.setMessage("It's a draw!");
     } else {
-      displayController.setMessage(`Player ${result} has won!`);
+      displayController.setMessage(`${result} has won!`);
     }
   };
 
@@ -121,7 +141,7 @@ const gameController = (() => {
     gameBoard.setCell(cellIndex, currentPlayer.getSign());
 
     if (checkWin()) {
-      setResultMessage(currentPlayer.getSign());
+      setResultMessage(currentPlayer.getName());
       gameOver = true;
       return;
     } else if (checkDraw()) {
@@ -174,6 +194,6 @@ const gameController = (() => {
     currentPlayer = playerX;
   };
 
-  return { playTurn, checkGameOver, resetGame };
+  return { playTurn, checkGameOver, resetGame, playerX, playerO };
 
 })();
