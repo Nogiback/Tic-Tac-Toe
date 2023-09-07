@@ -26,11 +26,13 @@ body {
   font-family: var(--font);
   background-color: var(--blue);
   color: var(--orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .header {
-  position: fixed;
-  z-index: 1000;
   width: 100%;
   height: 5rem;
   display: flex;
@@ -38,6 +40,7 @@ body {
   align-items: center;
   background: var(--black);
   box-shadow: var(--shadow);
+  margin-bottom: 40px;
 }
 
 .header h1 {
@@ -52,7 +55,6 @@ body {
   justify-content: center;
   align-items: center;
   background: var(--blue);
-  padding-top: 7rem;
 }
 
 .gameboard {
@@ -194,7 +196,6 @@ body {
   cursor: pointer;
 }
 
-
 .footer {
   position: fixed;
   bottom: 0;
@@ -221,12 +222,12 @@ body {
   }
 
   .main {
-    padding-top: 180px;
+    padding-top: 120px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .main {
-    padding-top: 210px;
+    padding-top: 100px;
   }
 }
