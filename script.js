@@ -74,14 +74,13 @@ const displayController = (() => {
     })
   );
   
-  gameButton.addEventListener("click", (e) => {
-    nameDialog.showModal();
+  gameButton.addEventListener("click", () => {
     gameButton.textContent = "Restart Game";
     gameBoard.resetBoard();
     gameController.resetGame();
     updateGameBoard();
     setMessage("Player X's turn!");
-  })
+  });
 
   const setMessage = (message) => {
     messageField.textContent = message;
