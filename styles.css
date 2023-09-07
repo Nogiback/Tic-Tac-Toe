@@ -21,7 +21,6 @@
     box-sizing: inherit;
 }
 
-
 body {
   font-family: var(--font);
   background-color: var(--blue);
@@ -31,6 +30,8 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
+/*-------------------------------------HEADER-----------------------------------------*/
 
 .header {
   width: 100%;
@@ -47,6 +48,8 @@ body {
   font-size: 3rem;
   font-weight: 900;
 }
+
+/*----------------------------------- GAME BOARD ---------------------------------------*/
 
 .main {
   position: relative;
@@ -129,6 +132,8 @@ body {
   top: 2px;
 }
 
+/*----------------------------------- INPUT MODAL ---------------------------------------*/
+
 #name-input {
   position: fixed;
   top: 50%;
@@ -196,6 +201,8 @@ body {
   cursor: pointer;
 }
 
+/*----------------------------------- FOOTER ---------------------------------------*/
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -209,6 +216,8 @@ body {
   background: var(--black);
   color: var(--orange);
 }
+
+/*-------------------------------- RESPONSIVE DESIGN ------------------------------------*/
 
 @media screen and (max-width: 850px) {
   .gameboard {
