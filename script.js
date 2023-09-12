@@ -18,7 +18,7 @@ const Player = (sign) => {
   return { getName, getSign, setName };
 };
 
-//-------------------------------- GAMEBOARD MODULE -----------------------------------//
+//-------------------------------- GAME-BOARD MODULE -----------------------------------//
 
 const gameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
